@@ -34,7 +34,7 @@ export default function RootLayout({
             </Avatar>
           </div>
         </nav>
-        <main className="w-full h-full bg-[#F9F7E8]">{children}</main>
+        <main className="w-full h-full bg-[#F9F7E8] px-[52px] py-[27px] overflow-y-auto">{children}</main>
       </body>
     </html>
   );
