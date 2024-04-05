@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import Image from 'next/image';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,8 +17,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="w-full h-[100%]">
+      <body className={`${inter.className} w-full h-full border flex flex-col`}>
+        <nav className="h-[79px] w-full flex items-center justify-between px-[70px]">
+          <Image src="/logo.svg" width={70} height={24} alt="Logo" />
+          <div className="flex items-center gap-[64px]">
+            <div className="cursor-pointer">Movies</div>
+            <div className="cursor-pointer">Tv Shows</div>
+            <Avatar>
+              <AvatarImage className="h-[48px] w-[48px]" src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </div>
+        </nav>
+        <main className="w-full h-full bg-[#F9F7E8]">{children}</main>
+      </body>
     </html>
   );
 }
