@@ -22,8 +22,12 @@ export default function RootLayout({
         <nav className="h-[79px] w-full flex items-center justify-between px-[70px]">
           <Image src="/logo.svg" width={70} height={24} alt="Logo" />
           <div className="flex items-center gap-[64px]">
-            <div className="cursor-pointer">Movies</div>
-            <div className="cursor-pointer">Tv Shows</div>
+            <div className="cursor-pointer border-b-transparent border-b-2 flex items-center justify-center h-[23px] hover:border-b-2 transition-all duration-150 ease-in-out hover:border-b-[#61BFAD]">
+              Movies
+            </div>
+            <div className="cursor-pointer border-b-transparent border-b-2 flex items-center justify-center h-[23px] hover:border-b-2 transition-all duration-150 ease-in-out hover:border-b-[#61BFAD]">
+              Tv Shows
+            </div>
             <Avatar>
               <AvatarImage className="h-[48px] w-[48px]" src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
