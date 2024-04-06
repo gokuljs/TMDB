@@ -12,16 +12,22 @@ const IMAGE_URL = 'https://image.tmdb.org/t/p/w500/';
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
   const [data, setData] = useState<Movie[]>([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const lastScrollTopRef = useRef(0); // Ref to store the last scroll position
+
+  const fetchData = async (page: number) => {
+    const response = await http.get(`movie/popular?language=en-US&page=${page}`);
+    return response.data.results;
+  };
 
   useEffect(() => {
     const fetch = async () => {
       setIsLoading(true);
       try {
-        const response = await http.get('movie/popular?language=en-US&page=1');
-        setData(response.data.results);
+        const response = await fetchData(1);
+        const secondResponse = await fetchData(2);
+        setData([...response, ...secondResponse]);
       } catch (error) {
         console.log(error);
       }
@@ -42,9 +48,11 @@ export default function Home(): JSX.Element {
       const isForwardScroll = scrollTop > lastScrollTopRef.current;
       if (isForwardScroll && scrolledPercentage > 50) {
         console.log('more than 60');
-        const response = await http.get(`movie/popular?language=en-US&page=${page + 1}`);
+        const response = await fetchData(page + 1);
         setPage((page) => page + 1);
-        setData((data) => [...data, ...response.data.results]);
+        setData((data) => {
+          return [...data, ...response];
+        });
       }
 
       lastScrollTopRef.current = scrollTop;
