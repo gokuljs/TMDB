@@ -31,14 +31,16 @@ export default function Home(): JSX.Element {
   return (
     <main className="h-full w-full ">
       <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {data.length > 0 &&
             data.map((item, index) => (
-              <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg h-[355.1px]">
-                <Image className="w-full" src={`${IMAGE_URL}${item.backdrop_path}`} width={193} height={289} alt="movie title" />
-                <div className="p-4 bg-[#050E12]">
-                  <p className="text-gray-900 text-lg font-medium">{item.title}</p>
-                  <p className="text-gray-600 text-sm">{getYear(item.release_date)}</p>
+              <div key={index} title={item.title} className="bg-white rounded-lg overflow-hidden shadow-lg w-[193px] h-[355px] flex flex-col">
+                <div className="w-full h-[289px] relative">
+                  <Image className="w-full" src={`${IMAGE_URL}${item.poster_path}`} layout="fill" objectFit="cover" alt="movie title" />
+                </div>
+                <div className="p-4 bg-[#050E12] h-[calc(355px - 289px)] w-full flex flex-col">
+                  <p className="text-[#B6B6B6] text-lg font-medium overflow-hidden whitespace-nowrap overflow-ellipsis">{item.title}</p>
+                  <p className="text-[#828282] text-sm">{getYear(item.release_date)}</p>
                 </div>
               </div>
             ))}
