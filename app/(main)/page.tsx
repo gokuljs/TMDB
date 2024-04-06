@@ -6,12 +6,11 @@ export default function Home(): JSX.Element {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYjkyMmRmMmI2NWM0MTExZjY0Yjk4ODAxZGM3ZTRkNyIsInN1YiI6IjYxNmZjNzcyODk0ZWQ2MDAyMzJkZDM5ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YXtwPU-zalujlxG5BNPn5l4RxMDte4B6Dve5q8UIrb4',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_READ_ACCESS_TOKEN}`,
     },
   };
 
-  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US', options)
     .then((response) => response.json())
     .then((response) => console.log(response))
     .catch((err) => console.error(err));
