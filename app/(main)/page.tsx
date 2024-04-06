@@ -63,21 +63,24 @@ export default function Home(): JSX.Element {
     };
   }, [page]);
 
-  console.log(data);
   return (
     <div ref={scrollContainerRef} className="overflow-y-auto w-[100vw] h-full ">
       <div className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {data.length > 0 &&
-            data.map((item) => (
-              <div key={item.id} title={item.title} className="bg-white rounded-lg overflow-hidden shadow-lg w-[193px] h-[355px] flex flex-col">
+            data.map((item, index) => (
+              <div
+                key={item.id.toString() + index}
+                title={item.title}
+                className="bg-white rounded-lg overflow-hidden shadow-lg w-[193px] h-[355px] flex flex-col"
+              >
                 <div className="w-full h-[289px] relative">
                   <Image
-                    loading="lazy"
-                    className="w-full"
+                    loading="eager"
+                    className="w-full object-cover"
                     src={`${IMAGE_URL}${item.poster_path}`}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     alt="movie title"
                   />
                 </div>
