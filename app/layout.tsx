@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <html lang="en" className="w-full h-[100%]">
-      <body className={`${inter.className} w-full h-full border flex flex-col`}>
+    <html lang="en" className="w-full h-full">
+      <body className={`${inter.className} w-full h-[100%] border flex flex-col`}>
         <nav className="h-[79px] w-full flex items-center justify-between sm:px-[70px] px-[40px]">
           <Image src="/logo.svg" width={70} height={24} alt="Logo" />
           <div className="items-center gap-[64px] hidden sm:flex">
@@ -34,7 +34,14 @@ export default function RootLayout({
             </Avatar>
           </div>
         </nav>
-        <main className="w-full h-full bg-[#F9F7E8] px-[52px] py-[27px] overflow-y-auto">{children}</main>
+        <main
+          style={{
+            height: 'calc(100% - 79px)',
+          }}
+          className="w-full bg-[#F9F7E8] flex"
+        >
+          {children}
+        </main>
       </body>
     </html>
   );
