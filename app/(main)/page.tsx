@@ -69,8 +69,8 @@ export default function Home(): JSX.Element {
       <div className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {data.length > 0 &&
-            data.map((item, index) => (
-              <div key={index} title={item.title} className="bg-white rounded-lg overflow-hidden shadow-lg w-[193px] h-[355px] flex flex-col">
+            data.map((item) => (
+              <div key={item.id} title={item.title} className="bg-white rounded-lg overflow-hidden shadow-lg w-[193px] h-[355px] flex flex-col">
                 <div className="w-full h-[289px] relative">
                   <Image
                     loading="lazy"
