@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-full h-[100%]">
       <body className={`${inter.className} w-full h-full border flex flex-col`}>
-        <nav className="h-[79px] w-full flex items-center justify-between px-[70px]">
+        <nav className="h-[79px] w-full flex items-center justify-between sm:px-[70px] px-[40px]">
           <Image src="/logo.svg" width={70} height={24} alt="Logo" />
-          <div className="flex items-center gap-[64px]">
+          <div className="items-center gap-[64px] hidden sm:flex">
             <div className="cursor-pointer border-b-transparent border-b-2 flex items-center justify-center h-[23px] hover:border-b-2 transition-all duration-150 ease-in-out hover:border-b-[#61BFAD]">
               Movies
             </div>
