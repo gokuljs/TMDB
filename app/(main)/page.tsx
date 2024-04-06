@@ -65,14 +65,21 @@ export default function Home(): JSX.Element {
 
   console.log(data);
   return (
-    <div ref={scrollContainerRef} className="overflow-y-auto w-[100vw] h-full bg-red-900">
+    <div ref={scrollContainerRef} className="overflow-y-auto w-[100vw] h-full ">
       <div className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {data.length > 0 &&
             data.map((item, index) => (
               <div key={index} title={item.title} className="bg-white rounded-lg overflow-hidden shadow-lg w-[193px] h-[355px] flex flex-col">
                 <div className="w-full h-[289px] relative">
-                  <Image className="w-full" src={`${IMAGE_URL}${item.poster_path}`} layout="fill" objectFit="cover" alt="movie title" />
+                  <Image
+                    loading="lazy"
+                    className="w-full"
+                    src={`${IMAGE_URL}${item.poster_path}`}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="movie title"
+                  />
                 </div>
                 <div className="p-4 bg-[#050E12] h-[calc(355px - 289px)] w-full flex flex-col">
                   <p className="text-[#B6B6B6] text-lg font-medium overflow-hidden whitespace-nowrap overflow-ellipsis">{item.title}</p>
