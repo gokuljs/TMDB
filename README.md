@@ -9,6 +9,7 @@ This project is a movie dashboard web application that fetches popular movies fr
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Testing](#testing)
+- [Project Structure](#ProjectStructure)
 - [Bonus Features](#bonus-features)
 
 ## Prerequisites
@@ -66,7 +67,7 @@ Unit tests are included for critical components and utility functions. Run the t
 ```bash
 npm run test
 ```
-# Project Structure
+# ProjectStructure
 
 This project is structured to support a scalable and maintainable architecture, utilizing the Next.js framework, TypeScript, and Tailwind CSS among other technologies. Below is an outline of the main directories and files, along with their purpose within the application.
 
