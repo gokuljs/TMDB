@@ -8,9 +8,6 @@ import { useEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
 import { Cell } from './_components/GridCell';
 
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500/';
-// https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
-
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
   const [data, setData] = useState<Movie[]>([]);
@@ -77,7 +74,6 @@ export default function Home(): JSX.Element {
       console.log('scroll');
       const isForwardScroll = scrollTop > lastScrollTopRef.current;
       if (isForwardScroll && scrolledPercentage > 90) {
-        console.log('more than 60');
         const response = await fetchData(page + 1);
         setPage((page) => page + 1);
         setData((data) => {
@@ -105,10 +101,10 @@ export default function Home(): JSX.Element {
       <Grid
         className="container fixedGrid"
         columnCount={columnCount}
-        columnWidth={193} // Fixed column width
+        columnWidth={193 + 30} // Fixed column width
         height={dimension.height}
         rowCount={Math.ceil(data.length / columnCount)}
-        rowHeight={355}
+        rowHeight={355 + 30}
         width={dimension.width}
         itemData={{ data, columnCount }}
         ref={gridContainerRef}
