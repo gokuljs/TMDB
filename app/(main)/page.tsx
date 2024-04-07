@@ -6,6 +6,7 @@ import { Cell } from './_components/GridCell';
 import useColumnCount from '@/lib/hooks/useColumnCount';
 import { fetchData } from '@/lib/getMovies';
 import useInfiniteScroll from '@/lib/hooks/useInfinteScroll';
+import SkeletonLoader from './_components/Skeleton';
 
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
@@ -43,19 +44,25 @@ export default function Home(): JSX.Element {
 
   return (
     <div ref={scrollContainerRef} className="w-[100vw] h-full flex">
-      <Grid
-        className="container fixedGrid"
-        columnCount={columnCount}
-        columnWidth={193 + 30} // Fixed column width
-        height={dimension.height}
-        rowCount={Math.ceil(data.length / columnCount)}
-        rowHeight={355 + 30}
-        width={dimension.width}
-        itemData={{ data, columnCount }}
-        ref={gridContainerRef}
-      >
-        {Cell}
-      </Grid>
+      {loading ? (
+        <div className="container">
+          <SkeletonLoader />
+        </div>
+      ) : (
+        <Grid
+          className="container fixedGrid"
+          columnCount={columnCount}
+          columnWidth={193 + 30} // Fixed column width
+          height={dimension.height}
+          rowCount={Math.ceil(data.length / columnCount)}
+          rowHeight={355 + 30}
+          width={dimension.width}
+          itemData={{ data, columnCount }}
+          ref={gridContainerRef}
+        >
+          {Cell}
+        </Grid>
+      )}
     </div>
   );
 }

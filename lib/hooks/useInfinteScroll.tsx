@@ -16,7 +16,7 @@ const useInfiniteScroll = (page: number, setPage: Dispatch<SetStateAction<number
       const scrolledPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
       const isForwardScroll = scrollTop > lastScrollTopRef.current;
 
-      if (isForwardScroll && scrolledPercentage > 90) {
+      if (isForwardScroll && scrolledPercentage > 80) {
         const response = await fetchData(page + 1);
         setPage((page) => page + 1);
         setData((data) => [...data, ...response]);
