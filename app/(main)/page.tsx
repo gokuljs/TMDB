@@ -45,7 +45,7 @@ export default function Home(): JSX.Element {
   }, []);
 
   return (
-    <div ref={scrollContainerRef} className="w-[100vw] h-full flex">
+    <div ref={scrollContainerRef} className="w-[100vw] h-full flex pt-5">
       {loading ? (
         <div className="container">
           <SkeletonLoader />
@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
           className="container fixedGrid"
           columnCount={columnCount}
           columnWidth={193 + 30} // Fixed column width
-          height={dimension.height}
+          height={dimension.height - 35}
           rowCount={Math.ceil(data.length / columnCount)}
           rowHeight={355 + 30}
           width={dimension.width}
