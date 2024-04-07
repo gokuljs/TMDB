@@ -50,7 +50,7 @@ export default function Home(): JSX.Element {
       const scrollHeight = scrollContainer.scrollHeight;
       const clientHeight = scrollContainer.clientHeight;
       const scrolledPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-      console.log('scroll');
+
       const isForwardScroll = scrollTop > lastScrollTopRef.current;
       if (isForwardScroll && scrolledPercentage > 90) {
         const response = await fetchData(page + 1);
