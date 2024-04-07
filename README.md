@@ -40,6 +40,11 @@ This project is a movie dashboard web application that fetches popular movies fr
 
 Replace `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` with the token you obtained.
 
+8. Run the project:
+    ```bash
+    npm run dev
+    ```
+
 
 
 
