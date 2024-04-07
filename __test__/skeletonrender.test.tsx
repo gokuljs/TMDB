@@ -7,6 +7,6 @@ describe('SkeletonLoader', () => {
     const { getAllByTestId } = render(<SkeletonLoader />);
     // eslint-disable-next-line testing-library/prefer-screen-queries
     const skeletonElements = getAllByTestId('skeleton');
-    expect(skeletonElements.length).toBe(10);
+    expect(skeletonElements.length).toBe(100);
   });
 });
