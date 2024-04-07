@@ -23,7 +23,7 @@ export const Cell: React.FC<CellProps> = ({ columnIndex, rowIndex, style, data }
   }
 
   return (
-    <div className="flex justify-center items-center" style={style} key={item.id.toString() + index}>
+    <div className={`flex justify-center items-center fadeIn`} style={style} key={item.id.toString() + index}>
       <div title={item.title} className="bg-white  h-[360px] w-[193px] rounded-lg overflow-hidden shadow-lg flex flex-col">
         <div className="w-full h-[289px] relative">
           <Image loading="eager" className="w-full h-full object-cover" src={`${IMAGE_URL}${item.poster_path}`} fill alt="movie title" />

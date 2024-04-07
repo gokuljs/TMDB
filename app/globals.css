@@ -82,8 +82,29 @@ body {
   }
 }
 
+.fixedGrid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.fixedGrid::-webkit-scrollbar {
+  display: none;
+}
+
 .fixedGrid > div {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.9s ease-in-out forwards;
 }
