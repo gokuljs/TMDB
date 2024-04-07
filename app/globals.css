@@ -65,6 +65,13 @@
     --ring: 0 0% 83.1%;
   }
 }
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @layer base {
   * {
@@ -73,4 +80,31 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.fixedGrid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.fixedGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.fixedGrid > div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards;
 }

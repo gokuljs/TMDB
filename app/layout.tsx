@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,11 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <html lang="en" className="w-full h-[100%]">
-      <body className={`${inter.className} w-full h-full border flex flex-col`}>
-        <nav className="h-[79px] w-full flex items-center justify-between px-[70px]">
+    <html lang="en" className="w-full h-full">
+      <body className={`${inter.className} w-full h-[100%] border flex flex-col`}>
+        <nav className="h-[79px] w-full flex items-center justify-between sm:px-[70px] px-[40px]">
           <Image src="/logo.svg" width={70} height={24} alt="Logo" />
-          <div className="flex items-center gap-[64px]">
+          <div className="items-center gap-[64px] hidden sm:flex">
             <div className="cursor-pointer border-b-transparent border-b-2 flex items-center justify-center h-[23px] hover:border-b-2 transition-all duration-150 ease-in-out hover:border-b-[#61BFAD]">
               Movies
             </div>
@@ -34,7 +35,8 @@ export default function RootLayout({
             </Avatar>
           </div>
         </nav>
-        <main className="w-full h-full bg-[#F9F7E8]">{children}</main>
+        <main className="w-full bg-[#F9F7E8] flex h-[calc(100%-79px)]">{children}</main>
+        <Toaster />
       </body>
     </html>
   );
