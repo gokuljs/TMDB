@@ -6,16 +6,10 @@ import Api from '@/lib/http';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
+import { Cell } from './_components/GridCell';
 
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500/';
 // https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
-
-interface CellProps {
-  columnIndex: number;
-  rowIndex: number;
-  style: React.CSSProperties;
-  data: Movie[];
-}
 
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
@@ -23,7 +17,7 @@ export default function Home(): JSX.Element {
   const [page, setPage] = useState(2);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const gridContainerRef = useRef<any>(null);
-  const [columnCount, setColumnCount] = useState(6); // Default column count
+  const [columnCount, setColumnCount] = useState<number>(6); // Default column count
   const [dimension, setDimension] = useState({
     height: 0,
     width: 0,
@@ -56,39 +50,6 @@ export default function Home(): JSX.Element {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const Cell: React.FC<CellProps> = ({ columnIndex, rowIndex, style, data }) => {
-    // Calculate the index of your item based on rowIndex and columnIndex
-    const index = rowIndex * columnCount + columnIndex;
-    const item = data[index];
-    const IMAGE_URL = 'https://image.tmdb.org/t/p/w500/';
-    if (!item) {
-      return null;
-    }
-
-    return (
-      <div
-        style={{
-          ...style,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          border: '1px solid black',
-        }}
-        key={item.id.toString() + index}
-      >
-        <div title={item.title} className="bg-white  h-[360px] w-[193px] rounded-lg overflow-hidden shadow-lg flex flex-col">
-          <div className="w-full h-[289px] relative">
-            <Image loading="eager" className="w-full h-full object-cover" src={`${IMAGE_URL}${item.poster_path}`} fill alt="movie title" />
-          </div>
-          <div className="p-4 bg-[#050E12] h-[calc(355px - 289px)] w-full flex flex-col">
-            <p className="text-[#B6B6B6] text-lg font-medium overflow-hidden whitespace-nowrap overflow-ellipsis">{item.title}</p>
-            <p className="text-[#828282] text-sm">{getYear(item.release_date)}</p>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   useEffect(() => {
     const fetch = async () => {
@@ -132,7 +93,6 @@ export default function Home(): JSX.Element {
     };
   }, [page]);
 
-  const getRowHeight = () => 355;
   useEffect(() => {
     if (!scrollContainerRef || !scrollContainerRef.current) return;
     const scrollContainer = scrollContainerRef.current;
@@ -150,7 +110,7 @@ export default function Home(): JSX.Element {
         rowCount={Math.ceil(data.length / columnCount)}
         rowHeight={355}
         width={dimension.width}
-        itemData={data}
+        itemData={{ data, columnCount }}
         ref={gridContainerRef}
       >
         {Cell}
