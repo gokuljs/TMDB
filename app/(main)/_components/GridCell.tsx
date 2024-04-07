@@ -45,7 +45,7 @@ export const Cell: React.FC<CellProps> = ({ columnIndex, rowIndex, style, data }
         </div>
         <div className="p-4 bg-[#050E12] h-[calc(355px - 289px)] w-full flex flex-col">
           <p className="text-[#B6B6B6] text-lg font-medium overflow-hidden whitespace-nowrap overflow-ellipsis">{item.title}</p>
-          <p className="text-[#828282] text-sm">{getYear(item.release_date)}</p>
+          <p className="text-[#828282] text-sm h-[20px]">{getYear(item.release_date)}</p>
         </div>
       </div>
     </div>
