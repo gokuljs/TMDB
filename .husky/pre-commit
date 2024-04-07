@@ -1,1 +1,15 @@
-npm test
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+
+echo "Formatting code..."
+npm run format
+
+echo "Checking formatting..."
+npm run format:check
+
+echo "Running test"
+npm run test
+
+echo "Pre-commit checks passed."

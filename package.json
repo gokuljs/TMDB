@@ -9,6 +9,8 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "prepare": "husky"
   },
   "dependencies": {
