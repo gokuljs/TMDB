@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
 import { fetchData } from '../getMovies';
 import { Movie } from '../Models/movie';
 
-const useInfiniteScroll = (page: number, setPage: Dispatch<SetStateAction<number>>, setData: Dispatch<SetStateAction<Movie[]>>) => {
+const useInfiniteScroll = (page: number, setPage: Dispatch<SetStateAction<number>>, setData: Dispatch<SetStateAction<Movie[]>>, loading: boolean) => {
   const lastScrollTopRef = useRef(0);
 
   useEffect(() => {
@@ -15,8 +15,7 @@ const useInfiniteScroll = (page: number, setPage: Dispatch<SetStateAction<number
       const clientHeight = scrollContainer.clientHeight;
       const scrolledPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
       const isForwardScroll = scrollTop > lastScrollTopRef.current;
-
-      if (isForwardScroll && scrolledPercentage > 80) {
+      if (isForwardScroll && scrolledPercentage > 50) {
         const response = await fetchData(page + 1);
         setPage((page) => page + 1);
         setData((data) => [...data, ...response]);
@@ -27,7 +26,7 @@ const useInfiniteScroll = (page: number, setPage: Dispatch<SetStateAction<number
 
     scrollContainer.addEventListener('scroll', handleScroll);
     return () => scrollContainer.removeEventListener('scroll', handleScroll);
-  }, [page]);
+  }, [page, loading]);
 };
 
 export default useInfiniteScroll;

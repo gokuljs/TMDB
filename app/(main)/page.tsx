@@ -15,7 +15,7 @@ export default function Home(): JSX.Element {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const gridContainerRef = useRef<any>(null);
   const columnCount = useColumnCount();
-  useInfiniteScroll(page, setPage, setData);
+  useInfiniteScroll(page, setPage, setData, loading);
   const [dimension, setDimension] = useState({
     height: 0,
     width: 0,
