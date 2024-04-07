@@ -1,13 +1,10 @@
 'use client';
 import { Movie } from '@/lib/Models/movie';
-import getYear from '@/lib/getYear';
-import http from '@/lib/http';
-import Api from '@/lib/http';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
+import { FixedSizeGrid as Grid } from 'react-window';
 import { Cell } from './_components/GridCell';
 import useColumnCount from '@/lib/hooks/useColumnCount';
+import { fetchData } from '@/lib/getMovies';
 
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
@@ -21,11 +18,6 @@ export default function Home(): JSX.Element {
     width: 0,
   });
   const lastScrollTopRef = useRef(0); // Ref to store the last scroll position
-
-  const fetchData = async (page: number) => {
-    const response = await http.get(`movie/popular?language=en-US&page=${page}`);
-    return response.data.results;
-  };
 
   useEffect(() => {
     const fetch = async () => {
@@ -50,7 +42,6 @@ export default function Home(): JSX.Element {
       const scrollHeight = scrollContainer.scrollHeight;
       const clientHeight = scrollContainer.clientHeight;
       const scrolledPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-
       const isForwardScroll = scrollTop > lastScrollTopRef.current;
       if (isForwardScroll && scrolledPercentage > 90) {
         const response = await fetchData(page + 1);
