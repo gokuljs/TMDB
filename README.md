@@ -64,7 +64,7 @@ Replace `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` with the token you obtained.
 Unit tests are included for critical components and utility functions. Run the tests using:
 
 ```bash
-    npm run test
+npm run test
 ```
 
 ## Bonus Features
