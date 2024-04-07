@@ -66,40 +66,42 @@ Unit tests are included for critical components and utility functions. Run the t
 ```bash
 npm run test
 ```
-# Project Folder Structure
+# Project Structure
 
-## /app
-### /__components
-Holds the main application logic and page-specific components, following Next.js 14 app router folder conventions.
+This project is structured to support a scalable and maintainable architecture, utilizing the Next.js framework, TypeScript, and Tailwind CSS among other technologies. Below is an outline of the main directories and files, along with their purpose within the application.
 
-### /globals.css
-The global CSS file that is applied throughout the app.
+## Directory Structure
 
-## /components/ui
-Includes reusable Global UI components.
+- **/app**
+  - **/__components**: Contains the main application logic and page-specific components, adhering to Next.js 14 app router folder conventions.
+  - **/globals.css**: Global styles that are applied throughout the app.
 
-## /lib/hooks
-Houses utility functions, custom hooks, and models defining the data structures used throughout the app.
+- **/components/ui**: Houses reusable UI components for global use across the application.
 
-## /public
-Contains all static assets like logos and icons used in the UI.
+- **/lib/hooks**: Dedicated to utility functions, custom hooks, and models that define the data structures used in the app.
+
+- **/public**: Stores all static assets like logos and icons, accessible throughout the UI.
 
 ## Root Files
-- `.eslintrc.json`: Configuration for ESLint to maintain code quality.
-- `.gitignore`: Specifies intentionally untracked files to ignore by Git.
-- `.prettierignore`: Lists files that Prettier will ignore when formatting.
-- `.prettierrc`: Configuration for Prettier code formatter.
-- `components.json`: Could contain metadata about components used in the project.
-- `jest.config.ts`: Configuration for Jest, a JavaScript testing framework.
-- `jest.setup.ts`: Setup file for Jest tests to configure or set up before the tests run.
-- `next-env.d.ts`: TypeScript declaration file for Next.js which ensures Next.js types are picked up by the TypeScript compiler.
-- `next.config.mjs`: Configuration file for Next.js.
-- `package-lock.json`: Automatically generated file for any operations where npm modifies either the node_modules tree or `package.json`.
-- `package.json`: Defines the project metadata and the list of dependency packages.
-- `postcss.config.js`: Configuration file for PostCSS, a tool for transforming CSS with JavaScript plugins.
-- `README.md`: Markdown file with the project's introduction, setup guide, and other helpful information.
-- `tailwind.config.ts`: Configuration file for Tailwind CSS, a utility-first CSS framework.
-- `tsconfig.json`: Configuration file for the TypeScript compiler.
+
+- **.eslintrc.json**: Configures ESLint for code quality standards.
+- **.gitignore**: Lists files and directories for Git to ignore.
+- **.prettierignore**: Specifies files to exclude from Prettier formatting.
+- **.prettierrc**: Configures Prettier for code formatting.
+- **components.json**: (Optional) Contains metadata about the project's components.
+- **jest.config.ts**: Configures Jest for testing.
+- **jest.setup.ts**: Provides setup configurations for Jest tests.
+- **next-env.d.ts**: TypeScript declaration file for Next.js, ensuring type safety.
+- **next.config.mjs**: Main configuration file for Next.js.
+- **package-lock.json**: Locks the versions of npm dependencies for consistent installs.
+- **package.json**: Defines project metadata and lists dependencies.
+- **postcss.config.js**: Configuration for PostCSS, enhancing CSS processing.
+- **README.md**: Introduces and provides setup instructions for the project.
+- **tailwind.config.ts**: Configures Tailwind CSS for utility-first styling.
+- **tsconfig.json**: Sets the TypeScript compiler options for the project.
+
+This structure is designed to promote efficient development practices and ensure a clear organization of the project's codebase.
+
 
 
 ## Bonus Features
