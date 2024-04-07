@@ -71,7 +71,8 @@ npm run test
 
 1. **Mobile Responsiveness**: The application is designed to be responsive across various screen sizes.
 2. **UI Design**: Incorporates smooth animations and transitions to enhance user experience.
-3. **Performance Optimization**: Includes optimizations such as lazy loading images and efficient rendering techniques.
+3. **Performance Optimization**: Includes optimizations such as lazy loading images, React virtualization, and infinite scroll to ensure fast load times and smooth scrolling.
+
 
 
 
