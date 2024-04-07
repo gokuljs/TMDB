@@ -35,14 +35,7 @@ export default function RootLayout({
             </Avatar>
           </div>
         </nav>
-        <main
-          style={{
-            height: 'calc(100% - 79px)',
-          }}
-          className="w-full bg-[#F9F7E8] flex"
-        >
-          {children}
-        </main>
+        <main className="w-full bg-[#F9F7E8] flex h-[calc(100%-79px)]">{children}</main>
         <Toaster />
       </body>
     </html>
