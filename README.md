@@ -9,6 +9,7 @@ This project is a movie dashboard web application that fetches popular movies fr
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Testing](#testing)
+- [Bonus Features](#bonus-features)
 
 ## Prerequisites
 
@@ -65,6 +66,12 @@ Unit tests are included for critical components and utility functions. Run the t
 ```bash
     npm run test
 ```
+
+## Bonus Features
+
+1. **Mobile Responsiveness**: The application is designed to be responsive across various screen sizes.
+2. **UI Design**: Incorporates smooth animations and transitions to enhance user experience.
+3. **Performance Optimization**: Includes optimizations such as lazy loading images and efficient rendering techniques.
 
 
 
