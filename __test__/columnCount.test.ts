@@ -6,7 +6,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 3000;
       global.dispatchEvent(new Event('resize'));
     });
@@ -17,7 +16,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 2000;
       global.dispatchEvent(new Event('resize'));
     });
@@ -28,7 +26,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 1299;
       global.dispatchEvent(new Event('resize'));
     });
@@ -39,7 +36,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 1000;
       global.dispatchEvent(new Event('resize'));
     });
@@ -50,7 +46,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 800;
       global.dispatchEvent(new Event('resize'));
     });
@@ -61,7 +56,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 576;
       global.dispatchEvent(new Event('resize'));
     });
@@ -73,7 +67,6 @@ describe('useColumnCount', () => {
     const { result } = renderHook(() => useColumnCount());
 
     act(() => {
-      // Simulate window resize
       global.innerWidth = 10;
       global.dispatchEvent(new Event('resize'));
     });

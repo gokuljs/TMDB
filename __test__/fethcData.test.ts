@@ -41,7 +41,6 @@ const dummyMovies: Movie[] = [
 
 describe('fetchData', () => {
   it('fetches popular movies and returns data', async () => {
-    // Mock the HTTP get method
     (http.get as jest.Mock).mockResolvedValue({
       data: {
         results: dummyMovies,
@@ -54,13 +53,9 @@ describe('fetchData', () => {
     expect(http.get).toHaveBeenCalledWith(`movie/popular?language=en-US&page=${page}`);
   });
   it('handles errors when fetching movies fails', async () => {
-    // Mock the HTTP get method to reject
     (http.get as jest.Mock).mockRejectedValue(new Error('API error'));
-
     const page = 99999999192232323;
     await expect(fetchData(page)).rejects.toThrow('API error');
-
-    // Optionally, you can also check that http.get was called with the expected URL
     expect(http.get).toHaveBeenCalledWith(`movie/popular?language=en-US&page=${page}`);
   });
 });
