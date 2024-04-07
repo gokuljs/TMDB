@@ -82,11 +82,7 @@ body {
   }
 }
 
-.fixedGrid {
-  overflow-x: hidden;
-}
-
-.fixedGrid + div {
+.fixedGrid > div {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
