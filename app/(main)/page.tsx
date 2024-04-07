@@ -5,6 +5,7 @@ import { FixedSizeGrid as Grid } from 'react-window';
 import { Cell } from './_components/GridCell';
 import useColumnCount from '@/lib/hooks/useColumnCount';
 import { fetchData } from '@/lib/getMovies';
+import useInfiniteScroll from '@/lib/hooks/useInfinteScroll';
 
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
@@ -13,12 +14,11 @@ export default function Home(): JSX.Element {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const gridContainerRef = useRef<any>(null);
   const columnCount = useColumnCount();
+  useInfiniteScroll(page, setPage, setData);
   const [dimension, setDimension] = useState({
     height: 0,
     width: 0,
   });
-  const lastScrollTopRef = useRef(0); // Ref to store the last scroll position
-
   useEffect(() => {
     const fetch = async () => {
       setIsLoading(true);
@@ -33,31 +33,6 @@ export default function Home(): JSX.Element {
     };
     fetch();
   }, []);
-
-  useEffect(() => {
-    const scrollContainer = document.getElementsByClassName('fixedGrid')[0];
-    if (!scrollContainer) return;
-    const handleScroll = async () => {
-      const scrollTop = scrollContainer.scrollTop;
-      const scrollHeight = scrollContainer.scrollHeight;
-      const clientHeight = scrollContainer.clientHeight;
-      const scrolledPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-      const isForwardScroll = scrollTop > lastScrollTopRef.current;
-      if (isForwardScroll && scrolledPercentage > 90) {
-        const response = await fetchData(page + 1);
-        setPage((page) => page + 1);
-        setData((data) => {
-          return [...data, ...response];
-        });
-      }
-
-      lastScrollTopRef.current = scrollTop;
-    };
-    scrollContainer.addEventListener('scroll', handleScroll);
-    return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
-    };
-  }, [page]);
 
   useEffect(() => {
     if (!scrollContainerRef || !scrollContainerRef.current) return;
