@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { FixedSizeGrid as Grid, GridChildComponentProps } from 'react-window';
 import { Cell } from './_components/GridCell';
+import useColumnCount from '@/lib/hooks/useColumnCount';
 
 export default function Home(): JSX.Element {
   const [loading, setIsLoading] = useState(false);
@@ -14,7 +15,7 @@ export default function Home(): JSX.Element {
   const [page, setPage] = useState(2);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const gridContainerRef = useRef<any>(null);
-  const [columnCount, setColumnCount] = useState<number>(6); // Default column count
+  const columnCount = useColumnCount();
   const [dimension, setDimension] = useState({
     height: 0,
     width: 0,
@@ -25,28 +26,6 @@ export default function Home(): JSX.Element {
     const response = await http.get(`movie/popular?language=en-US&page=${page}`);
     return response.data.results;
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      // Determine the number of columns based on the window width
-      if (window.innerWidth >= 1200) {
-        setColumnCount(6);
-      } else if (window.innerWidth >= 992) {
-        setColumnCount(4);
-      } else if (window.innerWidth >= 768) {
-        setColumnCount(3);
-      } else if (window.innerWidth >= 576) {
-        setColumnCount(2);
-      } else {
-        setColumnCount(1);
-      }
-    };
-
-    // Call handleResize initially and on window resize
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const fetch = async () => {
