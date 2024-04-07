@@ -72,14 +72,10 @@ This project is structured to support a scalable and maintainable architecture, 
 
 ## Directory Structure
 
-- **/app**
-  - **/__components**: Contains the main application logic and page-specific components, adhering to Next.js 14 app router folder conventions.
-  - **/globals.css**: Global styles that are applied throughout the app.
-
+- **/app**: Contains the main application logic and page-specific components, adhering to Next.js 14 app router folder conventions.
+- **/globals.css**: Global styles that are applied throughout the app.
 - **/components/ui**: Houses reusable UI components for global use across the application.
-
-- **/lib/hooks**: Dedicated to utility functions, custom hooks, and models that define the data structures used in the app.
-
+- **/lib Dedicated to utility functions, custom hooks, and models that define the data structures used in the app.
 - **/public**: Stores all static assets like logos and icons, accessible throughout the UI.
 
 ## Root Files
