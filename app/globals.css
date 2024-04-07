@@ -81,3 +81,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.fixedGrid {
+  overflow-x: hidden;
+}
+
+.fixedGrid + div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
