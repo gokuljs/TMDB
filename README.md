@@ -9,6 +9,7 @@ This project is a movie dashboard web application that fetches popular movies fr
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Testing](#testing)
+- [Project Structure](#ProjectStructure)
 - [Bonus Features](#bonus-features)
 
 ## Prerequisites
@@ -68,11 +69,43 @@ Replace `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` with the token you obtained.
 Unit tests are included for critical components and utility functions. Run the tests using:
 
 ```bash
-    npm run test
+npm run test
 ```
+
+# ProjectStructure
+
+This project is structured to support a scalable and maintainable architecture, utilizing the Next.js framework, TypeScript, and Tailwind CSS among other technologies. Below is an outline of the main directories and files, along with their purpose within the application.
+
+## Directory Structure
+
+- **/app**: Contains the main application logic and page-specific components, adhering to Next.js 14 app router folder conventions.
+- **/globals.css**: Global styles that are applied throughout the app.
+- **/components/ui**: Houses reusable UI components for global use across the application.
+- \*\*/lib Dedicated to utility functions, custom hooks, and models that define the data structures used in the app.
+- **/public**: Stores all static assets like logos and icons, accessible throughout the UI.
+
+## Root Files
+
+- **.eslintrc.json**: Configures ESLint for code quality standards.
+- **.gitignore**: Lists files and directories for Git to ignore.
+- **.prettierignore**: Specifies files to exclude from Prettier formatting.
+- **.prettierrc**: Configures Prettier for code formatting.
+- **components.json**: (Optional) Contains metadata about the project's components.
+- **jest.config.ts**: Configures Jest for testing.
+- **jest.setup.ts**: Provides setup configurations for Jest tests.
+- **next-env.d.ts**: TypeScript declaration file for Next.js, ensuring type safety.
+- **next.config.mjs**: Main configuration file for Next.js.
+- **package-lock.json**: Locks the versions of npm dependencies for consistent installs.
+- **package.json**: Defines project metadata and lists dependencies.
+- **postcss.config.js**: Configuration for PostCSS, enhancing CSS processing.
+- **README.md**: Introduces and provides setup instructions for the project.
+- **tailwind.config.ts**: Configures Tailwind CSS for utility-first styling.
+- **tsconfig.json**: Sets the TypeScript compiler options for the project.
+
+This structure is designed to promote efficient development practices and ensure a clear organization of the project's codebase.
 
 ## Bonus Features
 
 1. **Mobile Responsiveness**: The application is designed to be responsive across various screen sizes.
 2. **UI Design**: Incorporates smooth animations and transitions to enhance user experience.
-3. **Performance Optimization**: Includes optimizations such as lazy loading images and efficient rendering techniques.
+3. **Performance Optimization**: Includes optimizations such as lazy loading images, React virtualization, and infinite scroll to ensure fast load times and smooth scrolling.
