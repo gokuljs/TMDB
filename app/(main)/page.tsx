@@ -5,7 +5,7 @@ import { FixedSizeGrid as Grid } from 'react-window';
 import { Cell } from './_components/GridCell';
 import useColumnCount from '@/lib/hooks/useColumnCount';
 import { fetchData } from '@/lib/getMovies';
-import useInfiniteScroll from '@/lib/hooks/useInfinteScroll';
+import useInfiniteScroll from '@/lib/hooks/useInfiniteScroll';
 import SkeletonLoader from './_components/Skeleton';
 
 export default function Home(): JSX.Element {
@@ -13,13 +13,14 @@ export default function Home(): JSX.Element {
   const [data, setData] = useState<Movie[]>([]);
   const [page, setPage] = useState(2);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const gridContainerRef = useRef<any>(null);
   const columnCount = useColumnCount();
   useInfiniteScroll(page, setPage, setData, loading);
   const [dimension, setDimension] = useState({
     height: 0,
     width: 0,
   });
+
+  // fetching initial data
   useEffect(() => {
     const fetch = async () => {
       setIsLoading(true);
@@ -36,6 +37,7 @@ export default function Home(): JSX.Element {
   }, []);
 
   useEffect(() => {
+    // dimension of parent div after ui is mounted
     if (!scrollContainerRef || !scrollContainerRef.current) return;
     const scrollContainer = scrollContainerRef.current;
     const { height, width } = scrollContainer.getBoundingClientRect();
@@ -58,7 +60,6 @@ export default function Home(): JSX.Element {
           rowHeight={355 + 30}
           width={dimension.width}
           itemData={{ data, columnCount }}
-          ref={gridContainerRef}
         >
           {Cell}
         </Grid>
