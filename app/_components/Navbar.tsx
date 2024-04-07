@@ -11,7 +11,7 @@ const Navbar = () => {
   const [showMobileNav, setMobileNav] = useState<boolean>(false);
   return (
     <>
-      <nav className="h-[79px] w-full flex items-center justify-between sm:px-[70px] px-[40px]">
+      <nav className="h-[79px] w-full flex items-center justify-between sm:px-[70px] px-[20px]">
         <Image src="/logo.svg" width={70} height={24} alt="Logo" />
         <Menu className="block sm:hidden cursor-pointer" onClick={() => setMobileNav(true)} />
         <div className="items-center gap-[64px] hidden sm:flex">
